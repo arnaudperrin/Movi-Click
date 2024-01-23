@@ -1,21 +1,21 @@
-import { StatusBar } from 'expo-status-bar';
+// App.js
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
+import AppHome from './AppHome';  // Renommez votre composant App à AppHome
+import SurveyScreen from './SurveyScreen';
 
-export default function App() {
+const Stack = createStackNavigator();
+
+const App = () => {
   return (
-    <View style={styles.container}>
-      <Text>premier test</Text>
-      <StatusBar style="auto" />
-    </View>
+    <NavigationContainer>
+      <Stack.Navigator initialRouteName="Home" headerMode="none">
+        <Stack.Screen name="Home" component={AppHome} />
+        <Stack.Screen name="Survey" component={SurveyScreen} />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
-}
+};
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+export default App;
